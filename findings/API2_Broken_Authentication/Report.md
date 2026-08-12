@@ -61,24 +61,43 @@ Host: 127.0.0.1:8888
 
 ---
 
-**Evidence**
+## Evidence
 
-The following screenshots demonstrate the password reset workflow, API version downgrade, and successful OTP brute-force verification:
-------------------------------------------
-Screenshot and Description
-screenshots/01-forgot-password-ui.png	Forgot password page used to initiate the password reset process
+### 1. Forgot Password Interface
 
-screenshots/02-otp-page-ui.png	OTP verification page displayed after submitting a valid email address
+The password reset process was initiated through the **Forgot Password** functionality.
 
-screenshots/03-burp-request-v3-to-v2.png	Burp Suite request showing the API version modified from v3 to v2
-
-screenshots/04-valid-otp-response.png	Successful OTP validation response obtained through the legacy v2 endpoint
-
----------------------------------------------------------------
-
-These screenshots provide evidence of the API version downgrade, OTP brute-force testing workflow, and successful password reset verification through the legacy API endpoint.
+![Forgot Password](screenshots/01-forgot-password-ui.png)
 
 ---
+
+### 2. OTP Verification Page
+
+After submitting a valid email address, the application redirected the user to the **OTP verification page**.
+
+![OTP Verification](screenshots/02-otp-page-ui.png)
+
+---
+
+### 3. Burp Suite Request – API Version Downgrade
+
+The intercepted request originally used the **`v3` OTP verification endpoint**. The API version was modified to **`v2`**, which did not enforce the same brute-force protections.
+
+![Burp Request](screenshots/03-burp-request-v3-to-v2.png)
+
+---
+
+### 4. Successful OTP Validation via Legacy Endpoint
+
+The legacy **`v2` endpoint** accepted a valid OTP value during brute-force testing, allowing the password reset process to continue.
+
+![Valid OTP](screenshots/04-valid-otp-response.png)
+
+---
+
+The above evidence demonstrates the **API version downgrade**, **OTP brute-force testing workflow**, and **successful authentication bypass through the legacy `v2` endpoint**.
+------------------------
+
 
 ### Impact
 
