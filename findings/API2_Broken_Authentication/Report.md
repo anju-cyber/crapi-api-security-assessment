@@ -61,13 +61,17 @@ Host: 127.0.0.1:8888
 
 ---
 
-### Evidence
+**Evidence**
 
-* Original `v3` OTP verification request
-* Modified `v2` OTP verification request
-* Burp Intruder payload configuration
-* Successful OTP acceptance by the legacy endpoint
-* Password reset completed after OTP brute-force
+_The following screenshots demonstrate the password reset workflow, API version downgrade, and successful OTP brute-force verification:
+_
+Screenshot	Description
+screenshots/01-forgot-password-ui.png	Forgot password page used to initiate the password reset process
+screenshots/02-otp-page-ui.png	OTP verification page displayed after submitting a valid email address
+screenshots/03-burp-request-v3-to-v2.png	Burp Suite request showing the API version modified from v3 to v2
+screenshots/04-valid-otp-response.png	Successful OTP validation response obtained through the legacy v2 endpoint
+
+These screenshots provide evidence of the API version downgrade, OTP brute-force testing workflow, and successful password reset verification through the legacy API endpoint.
 
 ---
 
